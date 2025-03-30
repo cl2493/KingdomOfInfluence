@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=10 format=3 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
 [ext_resource type="Script" uid="uid://bodrkyghy7b8k" path="res://Scenes/kingdom_spawn.gd" id="1_jtqqd"]
 [ext_resource type="Script" uid="uid://dyadfgx22fcby" path="res://Scenes/player.gd" id="3_vmdq1"]
+[ext_resource type="PackedScene" uid="uid://bdn3enrs1eqj1" path="res://tree_pine_tall_a_2.tscn" id="4_ksjgd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtqqd"]
 depth_draw_mode = 2
@@ -65,3 +66,6 @@ shape = SubResource("CapsuleShape3D_jtqqd")
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91917)
+
+[node name="tree_pineTallA2" parent="." instance=ExtResource("4_ksjgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80447, -0.542066, 1.51672)
