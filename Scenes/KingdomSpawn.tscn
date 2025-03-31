@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=13 format=3 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
 [ext_resource type="Script" uid="uid://bodrkyghy7b8k" path="res://Scenes/kingdom_spawn.gd" id="1_jtqqd"]
 [ext_resource type="Script" uid="uid://dyadfgx22fcby" path="res://Scenes/player.gd" id="3_vmdq1"]
 [ext_resource type="PackedScene" uid="uid://bdn3enrs1eqj1" path="res://tree_pine_tall_a_2.tscn" id="4_ksjgd"]
+[ext_resource type="PackedScene" uid="uid://cyh5ty15w04nk" path="res://Scenes/Instances/character.tscn" id="5_ee6bs"]
+[ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="6_fbvpl"]
+[ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="7_r6alr"]
+[ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="8_tq6qv"]
+[ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="9_8iruv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtqqd"]
 depth_draw_mode = 2
@@ -12,10 +17,6 @@ uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmdq1"]
 size = Vector3(1000, 1, 1000)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cj8rm"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_cj8rm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtqqd"]
 radius = 0.68222
@@ -42,30 +43,21 @@ shape = SubResource("BoxShape3D_vmdq1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map"]
 transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469, 0.560031, 9.69254e-06, -0.560032, 0.828471, 0.237381, 9.20014, 1.57011)
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149334, 0)
-script = ExtResource("3_vmdq1")
-
-[node name="MeshBody" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_cj8rm")
-
-[node name="leftEye" type="MeshInstance3D" parent="Player/MeshBody"]
-transform = Transform3D(0.208563, 0, 0, 0, 0.208563, 0, 0, 0, 0.208563, 0.423927, 0.522101, -0.174426)
-mesh = SubResource("SphereMesh_cj8rm")
-
-[node name="rightEye" type="MeshInstance3D" parent="Player/MeshBody"]
-transform = Transform3D(0.208563, 0, 0, 0, 0.208563, 0, 0, 0, 0.208563, 0.423927, 0.522101, 0.187113)
-mesh = SubResource("SphereMesh_cj8rm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_jtqqd")
-
-[node name="CameraOrigin" type="Node3D" parent="Player"]
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraOrigin"]
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91917)
-
 [node name="tree_pineTallA2" parent="." instance=ExtResource("4_ksjgd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80447, -0.542066, 1.51672)
+
+[node name="Player2" parent="." instance=ExtResource("5_ee6bs")]
+script = ExtResource("3_vmdq1")
+skins = Array[Texture2D]([ExtResource("6_fbvpl"), ExtResource("7_r6alr"), ExtResource("8_tq6qv"), ExtResource("9_8iruv")])
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Player2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149334, 0)
+shape = SubResource("CapsuleShape3D_jtqqd")
+
+[node name="CameraOrigin" type="Node3D" parent="Player2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149334, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player2/CameraOrigin"]
+
+[node name="Camera3D" type="Camera3D" parent="Player2/CameraOrigin/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.91917)

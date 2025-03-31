@@ -3,6 +3,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@export var skins: Array[Texture2D]
 @onready var pivot = $CameraOrigin
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -15,6 +16,17 @@ func _ready():
 	# Disable mouse look for AC-style
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
+	# set mesh
+	var mesh = $Skeleton3D/characterMedium
+	var data = PlayerData.get_customization()
+		# Create a new material and assign the texture
+	var skin = data["skin"]
+	var material = StandardMaterial3D.new()
+	material.albedo_texture = skins[skin]
+
+	# Apply the new material to the mesh
+	mesh.material_override = material
+		
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta

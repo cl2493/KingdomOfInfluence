@@ -17,14 +17,6 @@ var rotation_speed = 0.01  # Adjust rotation sensitivity
 
 # creates skinn aray - function starts on ready 
 func _ready():
-	# Preload skins and appends to array
-	skins.append(preload("res://assests/Skins/criminalMaleA.png"))
-	skins.append(preload("res://assests/Skins/cyborgFemaleA.png"))
-	skins.append(preload("res://assests/Skins/skaterMaleA.png"))
-
-	# Ensure there's at least one skin
-	if skins.is_empty():
-		print("No skins assigned!")
 
 	# Apply the default skin (optional)
 	if skins.size() > 0:
@@ -95,3 +87,6 @@ func mouseExited():
 func toggleVisibilityChar():
 	visible = !visible
 	print("Char visibility")
+	
+func apply_customization():
+	PlayerData.save_customization(current_skin)
