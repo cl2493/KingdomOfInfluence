@@ -89,4 +89,4 @@ func toggleVisibilityChar():
 	print("Char visibility")
 	
 func apply_customization():
-	PlayerData.save_customization(current_skin)
+	PlayerData.save_customization(current_skin, "")
