@@ -1,61 +1,45 @@
 extends CharacterBody3D
 
+@export var camera_origin: Node3D  # Drag and drop CameraOrigin in the Inspector
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
-@export var skins: Array[Texture2D]
-@onready var pivot = $CameraOrigin
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _ready():
-	# Animal Crossing camera setup
-	$CameraOrigin/SpringArm3D/Camera3D.current = true
-	$CameraOrigin/SpringArm3D.spring_length = 5.0
-	$CameraOrigin/SpringArm3D.rotation_degrees = Vector3(-45, 0, 0)
-	
-	# Disable mouse look for AC-style
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-	# set mesh
-	var mesh = $Skeleton3D/characterMedium
-	var data = PlayerData.get_customization()
-		# Create a new material and assign the texture
-	var skin = data["skin"]
-	var material = StandardMaterial3D.new()
-	material.albedo_texture = skins[skin]
-
-	# Apply the new material to the mesh
-	mesh.material_override = material
-		
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		
+
 	# Handle Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	
+
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-	
-	# Get the input direction
+
+	# Get input direction
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-	
-	# Animal Crossing style movement (relative to camera)
-	var camera_basis = $CameraOrigin/SpringArm3D/Camera3D.global_transform.basis
-	var direction = Vector3.ZERO
-	direction = (camera_basis.z * input_dir.y + camera_basis.x * input_dir.x)
-	direction.y = 0  # Keep movement on the horizontal plane
-	direction = direction.normalized()
-	
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	move_and_slide()
-	
-	# Make camera follow player position but not rotation
-	$CameraOrigin.global_position = global_position
+
+	# Get camera basis for movement
+	if camera_origin:
+		var camera_basis = camera_origin.global_transform.basis
+		var direction = (camera_basis.z * input_dir.y + camera_basis.x * input_dir.x)
+		direction.y = 0  # Keep movement on the horizontal plane
+		direction = direction.normalized()
+
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+
+			# Rotate character to face movement direction
+			var target_rotation = atan2(direction.x, direction.z)
+			rotation.y = lerp_angle(rotation.y, target_rotation, 10 * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		move_and_slide()
+ 
+		# Fix: Make CameraOrigin follow Player without inheriting rotation
+		camera_origin.global_position = global_position
+		camera_origin.rotation = Vector3.ZERO  # Ensure no unwanted rotation
