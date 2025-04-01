@@ -9,6 +9,7 @@ var inputDir
 # get cam nodes
 @onready var twistPivot = $Horizontal
 @onready var pitchPivot = $Horizontal/Vertical
+@onready var springArm = $Horizontal/Vertical/SpringArm3D
 
 func _physics_process(delta: float) -> void:
 	# rotate each based on rotationa nd pivot
@@ -28,10 +29,12 @@ func _physics_process(delta: float) -> void:
 	
 	# zoom in and out
 	if Input.is_action_just_pressed("wheelUp"):
-		$Horizontal/Vertical/SpringArm3D.spring_length -= 1
+		if (springArm.spring_length > 0):
+			springArm.spring_length -= 1
 		
 	if Input.is_action_just_pressed("wheelDown"):
-		$Horizontal/Vertical/SpringArm3D.spring_length += 1
+		if (springArm.spring_length< 10):
+			springArm.spring_length += 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

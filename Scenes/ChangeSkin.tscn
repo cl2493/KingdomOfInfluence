@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgj1yjdo56hv2"]
+[gd_scene load_steps=10 format=3 uid="uid://bgj1yjdo56hv2"]
 
 [ext_resource type="PackedScene" uid="uid://cyh5ty15w04nk" path="res://Scenes/Instances/character.tscn" id="1_obnvj"]
 [ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="2_01lhc"]
-[ext_resource type="Script" uid="uid://kfg4d78ewmth" path="res://Scripts/PersonalityUI.gd" id="3_2ms1e"]
+[ext_resource type="Script" uid="uid://kfg4d78ewmth" path="res://Scripts/UICustomScene/NextButton/ToPersonalityUI.gd" id="3_2ms1e"]
 [ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="3_vc36h"]
-[ext_resource type="Script" uid="uid://bbj2xqkl6cra3" path="res://Scripts/kingdomUI.gd" id="4_abk0b"]
+[ext_resource type="Script" uid="uid://bbj2xqkl6cra3" path="res://Scripts/UICustomScene/NextButton/ToKingdomScrene.gd" id="4_abk0b"]
 [ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="4_c6ofp"]
 [ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="5_if7nu"]
+[ext_resource type="Script" uid="uid://cn0g7uoh6ge43" path="res://Scenes/backCharCustom.gd" id="7_01lhc"]
 
 [sub_resource type="GDScript" id="GDScript_6osvb"]
 script/source = "extends Camera3D
@@ -124,6 +125,13 @@ theme_override_constants/margin_top = 100
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_constants/separation = 50
+
+[node name="BackCharButton" type="Button" parent="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+action_mode = 0
+text = "Back"
+script = ExtResource("7_01lhc")
 
 [node name="Label" type="Label" parent="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -255,4 +263,5 @@ script = SubResource("GDScript_6osvb")
 [connection signal="pressed" from="Node3D/CanvasLayer/UI/CharacterCustomization/MarginContainer/VBoxContainer/CharButton2" to="Node3D/CanvasLayer/UI/CharacterCustomization/MarginContainer/VBoxContainer/CharButton2" method="personalityUI"]
 [connection signal="mouse_entered" from="Node3D/CanvasLayer/UI/CharacterCustomization/AspectRatioContainer/RotateButton" to="Node3D/Player" method="mouseEntered"]
 [connection signal="mouse_exited" from="Node3D/CanvasLayer/UI/CharacterCustomization/AspectRatioContainer/RotateButton" to="Node3D/Player" method="mouseExited"]
+[connection signal="pressed" from="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer/BackCharButton" to="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer/BackCharButton" method="backCustomCharUI"]
 [connection signal="pressed" from="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer/PersonalityButton" to="Node3D/CanvasLayer/UI/PersonalityCustomization/MarginContainer/VBoxContainer/PersonalityButton" method="kingdomUI"]
