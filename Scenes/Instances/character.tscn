@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://cyh5ty15w04nk"]
 
-[ext_resource type="Script" uid="uid://b7h8kdk1r7tp6" path="res://Scripts/ChangeSkin.gd" id="1_glpr6"]
-[ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://Assets/Skins/criminalMaleA.png" id="2_pjt0s"]
+[ext_resource type="Script" uid="uid://b7h8kdk1r7tp6" path="res://Scripts/UICustomScene/ChangeSkin.gd" id="1_glpr6"]
+[ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="2_pjt0s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 

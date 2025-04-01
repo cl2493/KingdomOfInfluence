@@ -8,7 +8,7 @@ const JUMP_VELOCITY = 4.5
 var parent
 @export var jumpImpulse = 10
 @onready var camH= $"../CameraOrigin/Horizontal"
-@onready var camV= $"../CameraOrigin/Vertical"
+@onready var camV= $"../CameraOrigin/Horizontal/Vertical"
 var running := true
 var jumping := true
 var mouse_captured := true
