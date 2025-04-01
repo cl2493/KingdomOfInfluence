@@ -2,12 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://cyh5ty15w04nk" path="res://Scenes/Instances/character.tscn" id="1_obnvj"]
 [ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="2_01lhc"]
-[ext_resource type="Script" uid="uid://d2cjr0ytekeg7" path="res://Scripts/camera_3d.gd" id="2_ogm7o"]
 [ext_resource type="Script" uid="uid://kfg4d78ewmth" path="res://Scripts/PersonalityUI.gd" id="3_2ms1e"]
 [ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="3_vc36h"]
 [ext_resource type="Script" uid="uid://bbj2xqkl6cra3" path="res://Scripts/kingdomUI.gd" id="4_abk0b"]
 [ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="4_c6ofp"]
 [ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="5_if7nu"]
+
+[sub_resource type="GDScript" id="GDScript_6osvb"]
+script/source = "extends Camera3D
+
+func _ready():
+	current = true  # Ensure this camera is active
+"
 
 [node name="ChangeSkin" type="Node"]
 
@@ -242,7 +248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48042, 1.78516, 2.77394)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00749302, 1.04837, 3.54811)
 current = true
-script = ExtResource("2_ogm7o")
+script = SubResource("GDScript_6osvb")
 
 [connection signal="pressed" from="Node3D/CanvasLayer/UI/CharacterCustomization/MarginContainer/VBoxContainer/HBoxContainer/Button" to="Node3D/Player" method="leftChoice"]
 [connection signal="pressed" from="Node3D/CanvasLayer/UI/CharacterCustomization/MarginContainer/VBoxContainer/HBoxContainer/Button2" to="Node3D/Player" method="rightChoice"]
