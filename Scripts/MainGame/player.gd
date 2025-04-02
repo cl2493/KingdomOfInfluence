@@ -81,9 +81,8 @@ func _physics_process(delta):
 		mouse_captured = !mouse_captured  # Flip the state
 
 	move_and_slide()
+	var v = Vector3(0, 0, 0)
 
-	var collision = move_and_collide(Vector3(0, 0, 0))  # Try moving with zero velocity
-	if collision:
-		print("Collided with: ", collision.get_collider().name)
-	if test_move(global_transform, Vector3.ZERO):
-		print("SpringArm colliding with:", collision.get_collider())
+
+
+	
