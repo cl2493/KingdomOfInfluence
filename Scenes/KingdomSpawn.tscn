@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=19 format=3 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
 [ext_resource type="Script" uid="uid://dyadfgx22fcby" path="res://Scripts/MainGame/player.gd" id="3_vmdq1"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="7_tq6qv"]
 [ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="8_8iruv"]
 [ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="9_f2052"]
+[ext_resource type="PackedScene" uid="uid://b6n2y7nssym1m" path="res://assests/nature/instances/crops_dirtSingle.glb" id="10_8iruv"]
+[ext_resource type="Script" uid="uid://bi0omkc5bw40s" path="res://Scripts/MainGame/dirpatch.gd" id="10_f2052"]
 [ext_resource type="Script" uid="uid://bgfldskcv238f" path="res://Scripts/MainGame/camMovement.gd" id="10_r6alr"]
-[ext_resource type="PackedScene" uid="uid://bko0pamxw5hev" path="res://assests/nature/pineTree.tscn" id="10_tq6qv"]
+[ext_resource type="PackedScene" uid="uid://bko0pamxw5hev" path="res://assests/nature/instances/pineTree.tscn" id="10_tq6qv"]
+[ext_resource type="PackedScene" uid="uid://bthoh201006ud" path="res://assests/nature/instances/crops_wheatStageB.glb" id="12_8iruv"]
 
 [sub_resource type="GDScript" id="GDScript_fbvpl"]
 script/source = "extends Node3D
@@ -21,6 +24,14 @@ uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmdq1"]
 size = Vector3(1000, 1, 1000)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8iruv"]
+load_path = "res://.godot/imported/crops_wheatStageA_NE.png-02dda8b6272159d4aff76289d2675dfd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f2052"]
+load_path = "res://.godot/imported/crops_wheatStageB_NE.png-c1a5d240f013efc5545cde070f2fee96.ctex"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8iruv"]
 
 [node name="KingdomSpawn" type="Node3D"]
 script = SubResource("GDScript_fbvpl")
@@ -79,3 +90,18 @@ margin = 0.5
 [node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/Horizontal/Vertical/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 fov = 80.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.792555, 2.43859)
+script = ExtResource("10_f2052")
+stageA = SubResource("CompressedTexture2D_8iruv")
+stageB = SubResource("CompressedTexture2D_f2052")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8iruv")
+
+[node name="crops_dirtSingle2" parent="Area3D" instance=ExtResource("10_8iruv")]
+
+[node name="wheat" type="Node3D" parent="Area3D"]
+
+[node name="stageB" parent="Area3D/wheat" instance=ExtResource("12_8iruv")]
