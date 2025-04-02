@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=13 format=3 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
 [ext_resource type="Script" uid="uid://dyadfgx22fcby" path="res://Scripts/MainGame/player.gd" id="3_vmdq1"]
@@ -22,10 +22,6 @@ uv1_triplanar = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmdq1"]
 size = Vector3(1000, 1, 1000)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtqqd"]
-radius = 0.68222
-height = 2.07157
-
 [node name="KingdomSpawn" type="Node3D"]
 script = SubResource("GDScript_fbvpl")
 
@@ -35,6 +31,9 @@ script = SubResource("GDScript_fbvpl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.342, 0)
 material_override = SubResource("StandardMaterial3D_jtqqd")
 transparency = 1.0
+use_collision = true
+collision_layer = 128
+collision_mask = 3
 size = Vector3(1000, 1, 1000)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="map/floor"]
@@ -47,22 +46,21 @@ shape = SubResource("BoxShape3D_vmdq1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map"]
 transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469, 0.560031, 9.69254e-06, -0.560032, 0.828471, 0.237381, 9.20014, 1.57011)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("10_tq6qv")]
+[node name="pineTree" parent="map" instance=ExtResource("10_tq6qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62502, -0.59357, 0)
+collision_layer = 128
+collision_mask = 131
 
 [node name="Player" type="Node3D" parent="."]
 
 [node name="PlayerBody" parent="Player" instance=ExtResource("5_ee6bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.835734, 0)
 top_level = true
+collision_mask = 131
 script = ExtResource("3_vmdq1")
 turn = 10
 jumpImpulse = 10
 skins = Array[Texture2D]([ExtResource("6_r6alr"), ExtResource("7_tq6qv"), ExtResource("8_8iruv"), ExtResource("9_f2052")])
-
-[node name="Collision3d" type="CollisionShape3D" parent="Player/PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149334, 0)
-shape = SubResource("CapsuleShape3D_jtqqd")
 
 [node name="CameraOrigin" type="Node3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.149334, 0)
@@ -74,6 +72,7 @@ script = ExtResource("10_r6alr")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraOrigin/Horizontal/Vertical"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.570508, 0)
+collision_mask = 128
 spring_length = 5.0
 margin = 0.5
 
