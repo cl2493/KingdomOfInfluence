@@ -9,6 +9,8 @@ var parent
 @export var jumpImpulse = 10
 @onready var camH= $"../CameraOrigin/Horizontal"
 @onready var camV= $"../CameraOrigin/Horizontal/Vertical"
+@onready var springArm= $"../CameraOrigin/Horizontal/Vertical/SpringArm3D"
+@onready var camOrigin = $"../CameraOrigin"
 var running := true
 var jumping := true
 var mouse_captured := true
@@ -48,7 +50,10 @@ func release_mouse():
 	
 func _process(delta):
 	parent.position = position
-	
+		# body follows wherever camera is turning in 1st person
+	if(springArm.spring_length <= 0):
+		var camera = camH.rotation.y  # Get the camera's yaw rotation
+		rotation.y = (135+camera)
 
 	
 func _physics_process(delta):
@@ -64,7 +69,10 @@ func _physics_process(delta):
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 		
-		rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.z), turn * delta)
+		# body follows wasd in 3rd pov
+		if (springArm.spring_length > 0):
+			rotation.y = lerp_angle(rotation.y, atan2(direction.x, direction.z), turn * delta)
+
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
