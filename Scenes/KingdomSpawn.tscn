@@ -1,18 +1,13 @@
-[gd_scene load_steps=26 format=4 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=21 format=4 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
-[ext_resource type="Script" uid="uid://dyadfgx22fcby" path="res://Scripts/MainGame/player.gd" id="3_vmdq1"]
-[ext_resource type="PackedScene" uid="uid://cyh5ty15w04nk" path="res://Scenes/Instances/character.tscn" id="5_ee6bs"]
 [ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="6_r6alr"]
-[ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="7_tq6qv"]
-[ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="8_8iruv"]
-[ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="9_f2052"]
 [ext_resource type="Script" uid="uid://dbjue43qcl26w" path="res://Scenes/npc.gd" id="10_8arhk"]
 [ext_resource type="PackedScene" uid="uid://b6n2y7nssym1m" path="res://assests/nature/instances/crops_dirtSingle.glb" id="10_8iruv"]
 [ext_resource type="Script" uid="uid://bi0omkc5bw40s" path="res://Scripts/MainGame/dirpatch.gd" id="10_f2052"]
-[ext_resource type="Script" uid="uid://bgfldskcv238f" path="res://Scripts/MainGame/camMovement.gd" id="10_r6alr"]
 [ext_resource type="PackedScene" uid="uid://bko0pamxw5hev" path="res://assests/nature/instances/pineTree.tscn" id="10_tq6qv"]
 [ext_resource type="PackedScene" uid="uid://bthoh201006ud" path="res://assests/nature/instances/crops_wheatStageB.glb" id="12_8iruv"]
+[ext_resource type="PackedScene" uid="uid://dm7xlcc2ossri" path="res://moveablePlayer.tscn" id="14_8arhk"]
 
 [sub_resource type="GDScript" id="GDScript_fbvpl"]
 script/source = "extends Node3D
@@ -238,34 +233,6 @@ transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62502, -0.59357, 0)
 collision_layer = 128
 collision_mask = 131
-
-[node name="Player" type="Node3D" parent="."]
-
-[node name="PlayerBody" parent="Player" instance=ExtResource("5_ee6bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.835734, 0)
-top_level = true
-collision_mask = 131
-script = ExtResource("3_vmdq1")
-turn = 10
-jumpImpulse = 10
-skins = Array[Texture2D]([ExtResource("6_r6alr"), ExtResource("7_tq6qv"), ExtResource("8_8iruv"), ExtResource("9_f2052")])
-
-[node name="CameraOrigin" type="Node3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-script = ExtResource("10_r6alr")
-
-[node name="Horizontal" type="Node3D" parent="Player/CameraOrigin"]
-
-[node name="Vertical" type="Node3D" parent="Player/CameraOrigin/Horizontal"]
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraOrigin/Horizontal/Vertical"]
-collision_mask = 128
-spring_length = 5.0
-margin = 0.5
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/Horizontal/Vertical/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-fov = 80.0
 
 [node name="NPC" type="Area3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.835892, 9.92087)
@@ -710,3 +677,8 @@ shape = SubResource("BoxShape3D_8iruv")
 [node name="wheat" type="Node3D" parent="Area3D"]
 
 [node name="stageB" parent="Area3D/wheat" instance=ExtResource("12_8iruv")]
+
+[node name="PlayerMovement" parent="." instance=ExtResource("14_8arhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.827295, 0)
+
+[editable path="PlayerMovement"]

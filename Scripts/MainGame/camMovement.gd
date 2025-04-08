@@ -10,6 +10,10 @@ var inputDir
 @onready var twistPivot = $Horizontal
 @onready var pitchPivot = $Horizontal/Vertical
 @onready var springArm = $Horizontal/Vertical/SpringArm3D
+@onready var cam = $Horizontal/Vertical/SpringArm3D/Camera3D
+
+func _ready():
+	cam.make_current()
 
 func _physics_process(delta: float) -> void:
 	# rotate each based on rotationa nd pivot
