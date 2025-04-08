@@ -5,7 +5,6 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @export var turn = 10
-var parent
 @export var jumpImpulse = 10
 @onready var camH= $"../CameraOrigin/Horizontal"
 @onready var camV= $"../CameraOrigin/Horizontal/Vertical"
@@ -36,7 +35,6 @@ func _ready():
 	
 	capture_mouse()
 	
-	parent = get_parent()
 	
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("exit"):
@@ -49,11 +47,13 @@ func release_mouse():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 func _process(delta):
-	parent.position = position
-		# body follows wherever camera is turning in 1st person
-	if(springArm.spring_length <= 0):
-		var camera = camH.rotation.y  # Get the camera's yaw rotation
-		rotation.y = (135+camera)
+	# Sync the parent Node3D to the character's global position
+	camOrigin.global_position = Vector3(global_position.x,global_position.y + 1.5, global_position.z)
+	print(global_position)
+	# Rotate character with camera in first-person mode
+	if springArm.spring_length <= 0:
+		var camera_yaw = camH.rotation.y
+		rotation.y = (135 + camera_yaw)
 
 	
 func _physics_process(delta):
@@ -66,8 +66,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED 
+		velocity.z = direction.z * SPEED 
 		
 		# body follows wasd in 3rd pov
 		if (springArm.spring_length > 0):
@@ -79,7 +79,6 @@ func _physics_process(delta):
 	
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMP_VELOCITY
-		jumping = true
 		
 	if Input.is_action_just_pressed("mouseToggle"):
 		if mouse_captured:
@@ -90,7 +89,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 	var v = Vector3(0, 0, 0)
-
+	if is_on_floor():
+		print("Player is on the floor")
+	else:
+		print("Player is in the air")
 
 
 	
