@@ -49,7 +49,7 @@ func release_mouse():
 func _process(delta):
 	# Sync the parent Node3D to the character's global position
 	camOrigin.global_position = Vector3(global_position.x,global_position.y + 1.5, global_position.z)
-	print(global_position)
+
 	# Rotate character with camera in first-person mode
 	if springArm.spring_length <= 0:
 		var camera_yaw = camH.rotation.y
@@ -89,10 +89,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	var v = Vector3(0, 0, 0)
-	if is_on_floor():
-		print("Player is on the floor")
-	else:
-		print("Player is in the air")
+
 
 
 	
