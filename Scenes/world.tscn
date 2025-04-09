@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://6pipp6gbiul2"]
+[gd_scene load_steps=13 format=3 uid="uid://6pipp6gbiul2"]
 
 [ext_resource type="MeshLibrary" uid="uid://bsrog21e6gtx" path="res://Scenes/Instances/natureTiles.tres" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://dm7xlcc2ossri" path="res://Scenes/Instances/moveablePlayer.tscn" id="2_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cl8f4l3gcog6l" path="res://assests/nature/instances/tent_detailedClosed.glb" id="3_8j60k"]
+[ext_resource type="PackedScene" uid="uid://ewc47bsrxwmq" path="res://assests/nature/instances/tent_detailedOpen.glb" id="4_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://c05s8tl5byf6o" path="res://assests/nature/instances/tree_default.glb" id="5_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://b7kgd5lql0c6h" path="res://assests/nature/instances/tree_oak.glb" id="7_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://cakaw1vpurr2l" path="res://assests/nature/instances/tree_palm.glb" id="8_ikia7"]
+[ext_resource type="PackedScene" uid="uid://d1naoshio10uw" path="res://assests/nature/instances/campfire_stones.glb" id="9_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://36i8sv75qmgh" path="res://assests/nature/instances/tree_pineDefaultA.glb" id="9_7yui6"]
+[ext_resource type="PackedScene" uid="uid://cxvjeapfatiax" path="res://assests/nature/instances/log_stack.glb" id="10_7yui6"]
+[ext_resource type="PackedScene" uid="uid://8fpuflq6tjdh" path="res://assests/nature/instances/campfire_logs.glb" id="10_ikia7"]
 
 [sub_resource type="Environment" id="Environment_go701"]
 background_mode = 1
@@ -28,5 +37,109 @@ transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_go701")
+
+[node name="tent_detailedClosed2" parent="." instance=ExtResource("3_8j60k")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 1.722, 1, 9.376)
+
+[node name="tent_detailedOpen2" parent="." instance=ExtResource("4_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -3.52495, 1, 9.39454)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="tree_default2" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10.631, 1, 6.36731)
+
+[node name="tree_default3" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.1193, 1, 1.46763)
+
+[node name="tree_default4" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.4384, 1, -4.00912)
+
+[node name="tree_default5" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.7807, 1, -1.1711)
+
+[node name="tree_default6" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.0447, 1, -9.8498)
+
+[node name="tree_default7" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.75571, 1, -6.98142)
+
+[node name="tree_default8" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -2.28625, 1, -10.5246)
+
+[node name="tree_default9" parent="Map" instance=ExtResource("5_fo5ed")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.08338, 1, -8.85858)
+
+[node name="tree_oak2" parent="Map" instance=ExtResource("7_0fj1v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.009, 1, -1.402)
+
+[node name="tree_oak3" parent="Map" instance=ExtResource("7_0fj1v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -1.58927, 1, -7.15545)
+
+[node name="tree_oak4" parent="Map" instance=ExtResource("7_0fj1v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.0584, 1, -5.40472)
+
+[node name="tree_oak5" parent="Map" instance=ExtResource("7_0fj1v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.7829, 1, 3.9753)
+
+[node name="tree_palm3" parent="Map" instance=ExtResource("8_ikia7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -9.12087, 1, 20.4411)
+
+[node name="tree_palm4" parent="Map" instance=ExtResource("8_ikia7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.6011, 1, 16.4551)
+
+[node name="tree_palm5" parent="Map" instance=ExtResource("8_ikia7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -27.6121, 1, 5.42927)
+
+[node name="tree_palm2" parent="Map" instance=ExtResource("8_ikia7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 2.077, 1, 23.814)
+
+[node name="tree_pineDefaultA2" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.11, 1, 1.805)
+
+[node name="tree_pineDefaultA3" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 8.60461, 1, -6.4935)
+
+[node name="tree_pineDefaultA4" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.37183, 0.999998, -18.289)
+
+[node name="tree_pineDefaultA5" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 9.71575, 0.999998, -18.1656)
+
+[node name="tree_pineDefaultA6" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.1885, 0.999998, -19.8393)
+
+[node name="tree_pineDefaultA7" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.42291, 0.999996, -24.8885)
+
+[node name="tree_pineDefaultA8" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.1032, 0.999996, -15.4428)
+
+[node name="tree_pineDefaultA9" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 26.4173, 0.999996, -3.87728)
+
+[node name="tree_pineDefaultA11" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.5078, 0.999996, 3.19851)
+
+[node name="tree_pineDefaultA12" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 23.9197, 0.999996, 15.072)
+
+[node name="tree_pineDefaultA13" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15.2495, 0.999996, 19.806)
+
+[node name="tree_pineDefaultA14" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.4416, 0.999998, 5.89252)
+
+[node name="tree_pineDefaultA10" parent="Map" instance=ExtResource("9_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 24.9684, 0.999994, 8.46164)
+
+[node name="campfire_stones2" parent="Map" instance=ExtResource("9_0fj1v")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.805944, 1, 4.65057)
+
+[node name="log_stack2" parent="Map" instance=ExtResource("10_7yui6")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.4558, 1, 4.30618)
+
+[node name="campfire_logs2" parent="Map" instance=ExtResource("10_ikia7")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.659729, 1, 4.58887)
 
 [editable path="PlayerMovement"]
