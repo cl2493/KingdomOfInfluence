@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=4 uid="uid://c3njpqy2qcci7"]
+[gd_scene load_steps=22 format=4 uid="uid://c3njpqy2qcci7"]
 
 [ext_resource type="Texture2D" uid="uid://y3oos8g7jth" path="res://assests/material/tiles/checkerboard.png" id="1_cj8rm"]
+[ext_resource type="PackedScene" uid="uid://ewc47bsrxwmq" path="res://assests/nature/instances/tent_detailedOpen.glb" id="1_fbvpl"]
 [ext_resource type="Texture2D" uid="uid://b8i0urtuieicu" path="res://assests/Skins/criminalMaleA.png" id="6_r6alr"]
 [ext_resource type="Script" uid="uid://dbjue43qcl26w" path="res://Scenes/npc.gd" id="10_8arhk"]
 [ext_resource type="PackedScene" uid="uid://b6n2y7nssym1m" path="res://assests/nature/instances/crops_dirtSingle.glb" id="10_8iruv"]
@@ -209,6 +210,9 @@ size = Vector3(1, 1.96924, 1.85791)
 script = SubResource("GDScript_fbvpl")
 
 [node name="map" type="Node3D" parent="."]
+
+[node name="tent_detailedOpen2" parent="map" instance=ExtResource("1_fbvpl")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.687909, 2.60747, -10.813)
 
 [node name="floor" type="CSGBox3D" parent="map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.342, 0)
