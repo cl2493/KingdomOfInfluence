@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bi0omkc5bw40s" path="res://Scripts/MainGame/dirpatch.gd" id="10_f2052"]
 [ext_resource type="PackedScene" uid="uid://bko0pamxw5hev" path="res://assests/nature/instances/pineTree.tscn" id="10_tq6qv"]
 [ext_resource type="PackedScene" uid="uid://bthoh201006ud" path="res://assests/nature/instances/crops_wheatStageB.glb" id="12_8iruv"]
-[ext_resource type="PackedScene" uid="uid://dm7xlcc2ossri" path="res://moveablePlayer.tscn" id="14_8arhk"]
+[ext_resource type="PackedScene" uid="uid://dm7xlcc2ossri" path="res://Scenes/Instances/moveablePlayer.tscn" id="14_8arhk"]
 
 [sub_resource type="GDScript" id="GDScript_fbvpl"]
 script/source = "extends Node3D
