@@ -10,17 +10,22 @@ var draggable = false
 var isDragging = false
 var last_mouse_position = Vector2()
 var rotation_speed = 0.01  # Adjust rotation sensitivity
-
+# definable later via signals
+var first_slider_value = 0.0
+var second_slider_value = 0.0
+var third_slider_value = 0.0
+var fourth_slider_value = 0.0
 
 # finds mech on player
 @onready var mesh = $Skeleton3D/characterMedium
 
 # creates skinn aray - function starts on ready 
 func _ready():
-
 	# Apply the default skin (optional)
 	if skins.size() > 0:
 		change_skin(1)
+	
+
 
 # running while game is playing
 func _process(delta):
@@ -89,4 +94,17 @@ func toggleVisibilityChar():
 	print("Char visibility")
 	
 func apply_customization():
-	PlayerData.save_customization(current_skin, "")
+	PlayerData.save_customization(current_skin, "", first_slider_value, second_slider_value, third_slider_value, fourth_slider_value)
+
+
+func _on_h_slider_change_first_slider(value):
+	first_slider_value = value
+
+func _on_h_slider_change_second_slider(value):
+	second_slider_value = value
+
+func _on_h_slider_change_third_slider(value):
+	third_slider_value = value
+
+func _on_h_slider_change_fourth_slider(value):
+	fourth_slider_value = value
