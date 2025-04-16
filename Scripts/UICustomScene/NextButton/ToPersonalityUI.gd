@@ -26,7 +26,7 @@ func _ready():
 func personalityUI():
 	username = nameBox.text
 	# save username
-	PlayerData.save_customization(0, username)
+	PlayerData.save_customization(0, username, 0.0, 0.0, 0.0, 0.0)
 	# turn off visibility of current ui
 	currentUI.visible = false
 	# get player node
