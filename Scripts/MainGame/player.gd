@@ -22,7 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	# set mesh
-	var mesh = $Skeleton3D/characterMedium
+	var mesh = $GeneralSkeleton/characterMedium
 	# get player data
 	var data = PlayerData.get_customization()
 	# set skin from player data NOTE: I want to change this later
@@ -32,7 +32,6 @@ func _ready():
 
 	# Apply the new material to the mesh
 	mesh.material_override = material
-	
 	capture_mouse()
 	
 	
@@ -64,6 +63,12 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		$AnimationPlayer.play("playerAnimPack/jump")
+	else:	
+		if input_dir:
+			$AnimationPlayer.play("playerAnimPack/run")
+		else:
+			$AnimationPlayer.play("playerAnimPack/idle")
 	
 	if direction:
 		velocity.x = direction.x * SPEED 

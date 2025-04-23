@@ -13,6 +13,11 @@ var fourthSlider = 0.0
 func save_customization(skin, name, firstSlideVal, secondSlideVal, thirdSlideVal, fourthSlideVal):
 	# set the skin input value in data
 	selectedSkin = skin
+	# Set scroll
+	firstSlider = firstSlideVal
+	secondSlider = secondSlideVal
+	thirdSlider = thirdSlideVal
+	fourthSlider = fourthSlideVal
 	# user inputed name
 	if (name != ""):
 		# input is set to username
@@ -21,18 +26,17 @@ func save_customization(skin, name, firstSlideVal, secondSlideVal, thirdSlideVal
 	else:
 		#user set to bob
 		username = "Bob"
-	firstSlider = firstSlideVal
-	secondSlider = secondSlideVal
-	thirdSlider = thirdSlideVal
-	fourthSlider = fourthSlideVal
+
 	
-	# debug print statements
-	print(selectedSkin)
-	print(username)
-	print(firstSlider, secondSlider, thirdSlider, fourthSlider)
 	
 # get data
 func get_customization():
+	print(selectedSkin)
+	print(username)
+	print(firstSlider)
+	print(secondSlider)
+	print(thirdSlider)
+	print(fourthSlider)
 	return {"skin": selectedSkin,
 			"name": username,
 			"first_slider": firstSlider,
