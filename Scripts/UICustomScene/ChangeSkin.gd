@@ -94,7 +94,15 @@ func toggleVisibilityChar():
 	print("Char visibility")
 	
 func apply_customization():
-	PlayerData.save_customization(current_skin, "", first_slider_value, second_slider_value, third_slider_value, fourth_slider_value)
+	var data = PlayerData.get_customization()
+	var name
+	# check if name is there
+	if (data["name"] != ""):
+		# set text to data 
+		name = data["name"]
+		PlayerData.save_customization(current_skin, name, first_slider_value, second_slider_value, third_slider_value, fourth_slider_value)
+	else:
+		PlayerData.save_customization(current_skin, "", first_slider_value, second_slider_value, third_slider_value, fourth_slider_value)
 
 
 func _on_h_slider_change_first_slider(value):
