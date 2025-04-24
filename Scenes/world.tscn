@@ -765,7 +765,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_axeuq")
 [node name="barrel2" parent="TheDrunk" instance=ExtResource("14_e0ngr")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0327582, -1.19559, 9.89483)
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_7yui6")
+stream = ExtResource("15_7yui6")
 autoplay = true
 parameters/looping = true
 
