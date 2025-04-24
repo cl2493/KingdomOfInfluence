@@ -212,6 +212,12 @@ metadata/_editor_floor_ = Vector3(1, 7, 0)
 [node name="PlayerMovement" parent="." instance=ExtResource("2_5a7ea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56426, 0)
 
+[node name="Player" parent="PlayerMovement" index="0"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="SpringArm3D" parent="PlayerMovement/CameraOrigin/Horizontal/Vertical" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522578, 0)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469, 0.560031, 9.69254e-06, -0.560032, 0.828471, 0.237381, 9.20014, 1.57011)
 
