@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dbjue43qcl26w" path="res://Scenes/npc.gd" id="12_c5t2i"]
 [ext_resource type="Texture2D" uid="uid://delalcivwnxwb" path="res://assests/Skins/skaterMaleA.png" id="13_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://ofgbu3rtdhp5" path="res://Models/GLB format/barrel.glb" id="14_e0ngr"]
+[ext_resource type="AudioStream" uid="uid://iw57otolqehs" path="res://assests/sound/lofi.mp3" id="15_7yui6"]
 
 [sub_resource type="Environment" id="Environment_go701"]
 background_mode = 1
@@ -763,5 +764,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_axeuq")
 
 [node name="barrel2" parent="TheDrunk" instance=ExtResource("14_e0ngr")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.0327582, -1.19559, 9.89483)
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_7yui6")
+autoplay = true
+parameters/looping = true
 
 [editable path="PlayerMovement"]
