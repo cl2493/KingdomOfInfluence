@@ -13,25 +13,38 @@ var bodyName
 func _on_body_entered(body):
 	bodyName = body.name
 	print(body.name, " is in front of npc")
-	if (bodyName == "PlayerBody"):
+	if (bodyName == "Player"):
 		inside = true
 
 func _on_body_exited(body):
 	print(body.name, " is not in front of npc")
-	if (bodyName == "PlayerBody"):
+	if (bodyName == "Player"):
 		inside = false
 	
 func _process(delta: float) -> void:
 	if inside:
 		if Input.is_action_just_pressed("interact"):
 			print("interacted")
+			randomDialog()
 			springArm.spring_length = 0
 			teleport_player_relative_to_object(Vector3(0, 0, -1))
+			
 # Function to teleport player relative to target object
 func teleport_player_relative_to_object(offset: Vector3):
 	# Get the current position of the target object
 	var position = global_position
 	print("Target Position: ", position)
+	
+	# commented because they were causing me errors
 	# Set the player's position relative to the target
 	player.global_position = position + offset
 	print("New Player Position: ", player.global_position)
+
+#dialog functions for village drunk
+func randomDialog():
+	Dialogic.timeline_ended.connect(ended_dialog)
+	var dialog_line = randi_range(1,4)
+	Dialogic.start("VillageDrunkTimeline"+str(dialog_line))
+	
+func ended_dialog():
+	Dialogic.timeline_ended.disconnect(ended_dialog)
