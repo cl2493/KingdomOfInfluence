@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="KingdomOfInfluence"
-run/main_scene="uid://vr6a8b8lx7jk"
+run/main_scene="uid://6pipp6gbiul2"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -28,7 +28,6 @@ directories/dch_directory={
 "VillageDrunk": "res://dialog/VillageDrunk.dch"
 }
 directories/dtl_directory={
-"Scripts/VillageDrunkTimeline1": "res://Scripts/VillageDrunkTimeline1.dtl",
 "Timelines/VillageDrunkTimeline1": "res://addons/dialogic/Timelines/VillageDrunkTimeline1.dtl",
 "Timelines/VillageDrunkTimeline2": "res://addons/dialogic/Timelines/VillageDrunkTimeline2.dtl",
 "Timelines/VillageDrunkTimeline3": "res://addons/dialogic/Timelines/VillageDrunkTimeline3.dtl",
@@ -65,7 +64,7 @@ text/autopauses={}
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/mixamo_animation_retargeter/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 
