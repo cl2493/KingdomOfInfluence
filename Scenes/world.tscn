@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dbjue43qcl26w" path="res://Scenes/npc.gd" id="12_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://c7jdcavn7a646" path="res://Models/GLB_format/barrel.glb" id="14_e0ngr"]
 [ext_resource type="AudioStream" uid="uid://iw57otolqehs" path="res://assests/sound/lofi.mp3" id="15_7yui6"]
-[ext_resource type="Script" path="res://Scenes/guitar.gd" id="18_0pcbe"]
+[ext_resource type="Script" uid="uid://cbktu5ak0u57n" path="res://Scenes/guitar.gd" id="18_0pcbe"]
 [ext_resource type="AudioStream" uid="uid://dus6hfcbnxpht" path="res://assests/sound/chords/AmDown.mp3" id="19_xbk3s"]
 [ext_resource type="AudioStream" uid="uid://banv8i863fw0k" path="res://assests/sound/chords/AmUp.mp3" id="20_i4fjy"]
 [ext_resource type="AudioStream" uid="uid://jglk4ophgs0n" path="res://assests/sound/chords/CDown.mp3" id="21_pt3ps"]
