@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://6pipp6gbiul2"]
+[gd_scene load_steps=27 format=4 uid="uid://6pipp6gbiul2"]
 
 [ext_resource type="MeshLibrary" uid="uid://bsrog21e6gtx" path="res://Scenes/Instances/natureTiles.tres" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://dm7xlcc2ossri" path="res://Scenes/Instances/moveablePlayer.tscn" id="2_5a7ea"]
@@ -17,13 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://iw57otolqehs" path="res://assests/sound/lofi.mp3" id="15_7yui6"]
 [ext_resource type="Texture2D" uid="uid://cy5svfmcueksu" path="res://assests/Skins/skaterFemaleA.png" id="16_hgpy0"]
 [ext_resource type="Texture2D" uid="uid://d4ln8y5hopefd" path="res://assests/Skins/cyborgFemaleA.png" id="16_t2t4p"]
-[ext_resource type="Script" uid="uid://cbktu5ak0u57n" path="res://Scenes/guitar.gd" id="18_0pcbe"]
-[ext_resource type="AudioStream" uid="uid://dus6hfcbnxpht" path="res://assests/sound/chords/AmDown.mp3" id="19_xbk3s"]
-[ext_resource type="AudioStream" uid="uid://banv8i863fw0k" path="res://assests/sound/chords/AmUp.mp3" id="20_i4fjy"]
-[ext_resource type="AudioStream" uid="uid://jglk4ophgs0n" path="res://assests/sound/chords/CDown.mp3" id="21_pt3ps"]
-[ext_resource type="AudioStream" uid="uid://df3klhv1b5ssl" path="res://assests/sound/chords/CUp.mp3" id="22_hmc15"]
-[ext_resource type="AudioStream" uid="uid://xe8coiydk4l0" path="res://assests/sound/chords/GDown.mp3" id="23_dt0r1"]
-[ext_resource type="AudioStream" uid="uid://bu0m7depg202l" path="res://assests/sound/chords/GUp.mp3" id="24_qebug"]
 
 [sub_resource type="Environment" id="Environment_go701"]
 background_mode = 1
@@ -226,10 +219,13 @@ data = {
 metadata/_editor_floor_ = Vector3(1, 7, 0)
 
 [node name="PlayerMovement" parent="." instance=ExtResource("2_5a7ea")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.56426, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56426, 0)
 
-[node name="CameraOrigin" parent="PlayerMovement" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="Player" parent="PlayerMovement" index="0"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="SpringArm3D" parent="PlayerMovement/CameraOrigin/Horizontal/Vertical" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.522578, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999998, -0.00150975, -0.00103226, 0.00182888, 0.828469, 0.560031, 9.69254e-06, -0.560032, 0.828471, 0.237381, 9.20014, 1.57011)
@@ -1647,13 +1643,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1cojt")
 stream = ExtResource("15_7yui6")
 autoplay = true
 parameters/looping = true
-
-[node name="Guitar" type="Node3D" parent="."]
-script = ExtResource("18_0pcbe")
-Am = Array[AudioStream]([ExtResource("19_xbk3s"), ExtResource("20_i4fjy")])
-C = Array[AudioStream]([ExtResource("21_pt3ps"), ExtResource("22_hmc15")])
-G = Array[AudioStream]([ExtResource("23_dt0r1"), ExtResource("24_qebug")])
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Guitar"]
 
 [editable path="PlayerMovement"]
