@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 
 # variables for player details
+@onready var npc = get_node("/root/world/TheDrunk/DrunkardNPC") # path to the node
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 @export var turn = 10
@@ -48,9 +50,9 @@ func release_mouse():
 func _process(delta):
 	# Sync the parent Node3D to the character's global position
 	camOrigin.global_position = Vector3(global_position.x,global_position.y + 1.5, global_position.z)
-
+	var rotationOverride = npc.rotationOverride
 	# Rotate character with camera in first-person mode
-	if springArm.spring_length <= 0:
+	if springArm.spring_length <= 0 and not rotationOverride:
 		var camera_yaw = camH.rotation.y
 		rotation.y = (135 + camera_yaw)
 
